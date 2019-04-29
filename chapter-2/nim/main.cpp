@@ -34,7 +34,17 @@ int game()
     int total = number;
     while (total > 0)
     {
-        if (total % 3 == 2)
+        if (total % 10 == 0)
+        {
+            total = total - 10;
+            std::cout << "computer subtracting 10\n🏁 New total is " << total << "\n";
+        }
+        else if (total % 7 == 0)
+        {
+            total = total - 7;
+            std::cout << "computer subtracting 7\n🏁 New total is " << total << "\n";
+        }
+        else if (total % 3 == 2)
         {
             total = total - 2;
             std::cout << "computer subtracting 2\n🏁 New total is " << total << "\n";
@@ -85,16 +95,16 @@ int user_input()
         std::cout << "New Game 0 \n 🌀🌀🌀🌀🌀🌀🌀🌀🌀🌀🌀🌀🌀🌀🌀🌀🌀🌀🌀🌀🌀🌀🌀🌀🌀🌀🌀🌀🌀🌀🌀🌀🌀🌀🌀\n";
         no_of_games += 1;
     }
-    // else
-    // {
-    //     std::cout << "🌀🌀🌀🌀🌀🌀🌀🌀🌀🌀🌀🌀🌀🌀 choose a number greater than 1🌀🌀🌀🌀🌀🌀🌀🌀🌀🌀🌀🌀🌀-->\n";
-    //     no_of_games += 1;
-    // }
+    else
+    {
+        std::cout << "🌀🌀🌀🌀🌀🌀🌀🌀🌀🌀🌀🌀🌀🌀 choose a number greater than 1🌀🌀🌀🌀🌀🌀🌀🌀🌀🌀🌀🌀🌀-->\n";
+        no_of_games += 1;
+    }
 
     std::cin >> number;
-    while (number < 1)
+    while (number < 1 || number > 100)
     {
-        std::cout << "You chose-->" << number << " \n s=Select number greater than 1 only for new game\n";
+        std::cout << "You chose-->" << number << " \n s=Select number greater than 1 and below 100 only for new game\n";
         user_input();
     }
     return number;
@@ -103,11 +113,11 @@ int user_input()
 int opponent_input()
 {
     //recursion technique for user input
-    std::cout << "Opponent: Your turn choose 2 or 1 -->\n";
+    std::cout << "Opponent: Your turn choose any number between 1 to 10 -->\n";
     std::cin >> opponent_turn;
-    while (opponent_turn > 2 || opponent_turn < 1)
+    while (opponent_turn > 11 || opponent_turn < 1)
     {
-        std::cout << "You choose-->" << opponent_turn << " select 1 or 2 only\n";
+        std::cout << "You choose-->" << opponent_turn << " select 1 or 10 only\n";
         opponent_input();
     }
     return opponent_turn;
